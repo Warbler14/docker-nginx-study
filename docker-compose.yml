@@ -1,0 +1,18 @@
+networks:
+  front-connection:
+    driver: bridge
+
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    ports: 
+      - "80:80/tcp"
+      - "443:443"
+    volumes:
+      - $DOC_PATH:/usr/share/nginx/html
+    networks:
+      - front-connection
+    environment:
+      - TZ=Asia/Seoul
